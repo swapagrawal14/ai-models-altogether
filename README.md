@@ -36,7 +36,7 @@ Open http://localhost:3000
 
 ## Deploy
 
-Deployed on Vercel: https://ai-selector-6irmk8x3y-swapnil-agrawal-s-projects.vercel.app
+Deployed on Vercel: https://ai-selector-web.vercel.app
 
 To deploy your own copy:
 ```bash
