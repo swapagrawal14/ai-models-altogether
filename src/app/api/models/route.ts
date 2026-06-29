@@ -5,12 +5,17 @@ export async function GET(request: NextRequest) {
   const provider = searchParams.get("provider")
   const apiKey = searchParams.get("apiKey")
 
-  if (!provider || !apiKey) {
-    return NextResponse.json({ error: "Provider and API key required" }, { status: 400 })
+  if (!provider) {
+    return NextResponse.json({ error: "Provider required" }, { status: 400 })
   }
 
   try {
     let models: Array<{id: string; name: string}> = []
+    const providersWithStaticModels = ["anthropic", "google", "xai"]
+
+    if (!apiKey && !providersWithStaticModels.includes(provider)) {
+      return NextResponse.json({ error: "API key required for this provider" }, { status: 400 })
+    }
 
     switch (provider) {
       case "openrouter":
